@@ -98,7 +98,7 @@ For the classification problem, we only need to ensure that the network model is
    \begin{center}
       \includegraphics[width=0.7\linewidth]{1621944333639.png}
    \end{center}
-      \caption{Visual comparison of i-ResNet flow and Glow~\cite{kingma2018glow}.}
+      \caption{Visual comparison of i-ResNet flow and Glow.}
    \label{fig:2}
 \end{figure*}
 
@@ -364,7 +364,7 @@ Invertible Resnet first perform logarithmic expansion of the Jacobian matrix wit
 
 %------------------------------------------------------------------------4.1
 \subsection{Toy Dataset Experiment}
-The Toy data set constructs some regular random points. The purpose is to use a generative model to fit its distribution. Such experiments are often done in GAN. From the ablFigure \ref{fig:2}, you can see that the effect of invertible Resnet~\cite{behrmann2019invertible} is much better than Glow~\cite{kingma2018glow}. I think it’s because invertible Resnet is a very symmetrical model with no bias in dimension, while Glow is biased in dimension. It requires us to shuffle the input in some way, and then split it in half. Different, which brings about the problem of asymmetry.
+The Toy data set constructs some regular random points. The purpose is to use a generative model to fit its distribution. Such experiments are often done in GAN. From the Figure \ref{fig:2}, you can see that the effect of invertible Resnet~\cite{behrmann2019invertible} is much better than Glow~\cite{kingma2018glow}. I think it’s because invertible Resnet is a very symmetrical model with no bias in dimension, while Glow is biased in dimension. It requires us to shuffle the input in some way, and then split it in half. Different, which brings about the problem of asymmetry.
 
 %------------------------------------------------------------------------4.2
 
@@ -389,7 +389,7 @@ The comparison with the results of other generative models can be found in Table
 \section{Conclusion}
 Before invertible Resnet, one of the most successful feed-forward architectures for discriminative learning was the deep residual network~\cite{he2016deep}, but this architecture is very different from the corresponding generative model. This division complicates the selection or design of the appropriate architecture for a given task. And invertible Resnet proposes a new architecture with good performance that can solve this problem and bridges this gap. And it is not limited to specific network structure design. The whole work is very violent. Through a Lipschitz constant, the three problems of the reversible maximum likelihood generation model are solved. There is a whole sense of beauty in it.
 
-However, there is still a gap between the results of individual networks in the discrimination task and the generation task. I think this is because the author is calculating the matrix trace Equation [\ref{eq21}] using the method of probability sampling Equation [\ref{eq22}], only taking a vector $u$ randomly from the multivariate probability distribution $p( u)$, which leads to a biased estimate of the logarithmic determinant~\cite{han2018stochastic}. I personally think that if this part of the estimate can be processed by an unbiased method~\cite{anil2019sorting}, it may improve certain performance.
+However, there is still a gap between the results of individual networks in the discrimination task and the generation task. I think this is because the author is calculating the matrix trace Equation (\ref{eq21}) using the method of probability sampling Equation (\ref{eq22}), only taking a vector $u$ randomly from the multivariate probability distribution $p( u)$, which leads to a biased estimate of the logarithmic determinant~\cite{han2018stochastic}. I personally think that if this part of the estimate can be processed by an unbiased method~\cite{anil2019sorting}, it may improve certain performance.
 
 
 %-------------------------------------------------------------------------
@@ -416,7 +416,7 @@ However, there is still a gap between the results of individual networks in the 
 \label{app1}
 \noindent\emph{Proof}. (\textbf{Theorem 1})
 
-According to Equation 9, we have
+According to Equation (\ref{eq9}), we have
 
 \begin{equation}
 \Vert W\Vert_2^2 = \max_{x\neq 0}\frac{x^{\top}W^{\top} Wx}{x^{\top} x} = \max_{\Vert x\ Vert=1}x^{\top}W^{\top} Wx
@@ -493,7 +493,7 @@ By the way, in the above formula, taking $k\to\infty$, we get:
 
 \begin{equation}\left\Vert x^*-x_{n}\right\Vert_2 \leq \frac{\text{Lip}(g)^n}{1-\text{Lip}(g)}\ Vert x_{1}-x_{0}\Vert_2\end{equation}
 
-In other words, the convergence speed of this iterative algorithm is proportional to $\text{Lip}(g)^n$, so naturally, the smaller the $\text{Lip}(g)$, the faster the convergence, but $\text{ The smaller Lip}(g)$, the weaker the fitting ability of the model. In the original paper, its range is $0.5～0.9$.
+In other words, the convergence speed of this iterative algorithm is proportional to $\text{Lip}(g)^n$, so naturally, the smaller the $\text{Lip}(g)$, the faster the convergence, but $\text{ The smaller Lip}(g)$, the weaker the fitting ability of the model. In the original paper, its range is $0.5-0.9$.
 
 To be more ambitious, this is actually the Banach fixed point theorem in functional analysis, also known as the compression mapping theorem (because $\text{Lip}(g)$ is less than 1, so $g$ is called Is a compression map.).
 
